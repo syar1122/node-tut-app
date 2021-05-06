@@ -1,0 +1,27 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<mat-accordion *ngIf="!isLoading">
+  <mat-expansion-panel *ngFor="let post of posts">
+    <mat-expansion-panel-header>
+      <mat-label class="mat-h1">
+        {{post.title}}
+      </mat-label>
+    </mat-expansion-panel-header>
+    <div class="panel-container">
+      <div class="post-img">
+        <img [src]="post.imagePath">
+      </div>
+      <div>
+        <p> {{post.content}}</p>
+      </div>
+    </div>
+    <mat-action-row *ngIf="userIsAuthenticated && userId === post.creator">
+      <button mat-button color="primary" (click)="onEdit(post.id)">EDIT</button>
+      <button mat-button color="warn" (click)="onDelete(post.id)">DELETE</button>
+
+    </mat-action-row>
+  </mat-expansion-panel>
+
+  <mat-paginator [length]="totalPost" [pageIndex]="currentPage" [pageSize]="pageSize" (page)="onChangePage($event)"
+    *ngIf="posts.length > 0">
+  </mat-paginator>
+</mat-accordion>

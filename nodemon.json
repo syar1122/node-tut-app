@@ -1,0 +1,6 @@
+{
+    "env" : {
+      "MONGO_DB_PASS" : "H88Y8Q5KN3PAgVW",
+      "JWT_SECRET_KEY" : "secret_to_the_web_token_normally_must_be_longer"
+    }
+}

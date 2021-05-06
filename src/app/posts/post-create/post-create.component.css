@@ -1,0 +1,20 @@
+
+
+mat-form-field ,textarea{
+
+  width: 100%;
+}
+
+mat-spinner{
+  margin: auto;
+}
+
+.image-prev{
+  height: 10rem;
+  margin: 1rem 0;
+
+
+}
+.image-prev img{
+  height: 100%;
+}

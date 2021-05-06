@@ -1,0 +1,36 @@
+<mat-card>
+  <mat-card-title>
+    Post
+  </mat-card-title>
+  <mat-spinner *ngIf="isLoading"> </mat-spinner>
+  <form [formGroup]="form" *ngIf="!isLoading" action="post" (submit)="savePost()" #postForm="ngForm">
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input formControlName="title" matInput type="text">
+      <mat-error *ngIf="form.get('title')?.invalid">this field required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Content</mat-label>
+      <textarea matInput formControlName="content" rows="5" placeholder="write your opinion"></textarea>
+      <mat-error *ngIf="form.get('content')?.invalid">this field required</mat-error>
+    </mat-form-field>
+
+    <div>
+      <button mat-stroked-button type="button" (click)="file.click() ">Open File</button>
+      <input type="file" style="display: none;" #file (change)="onImgPick($event)">
+    </div>
+    <div class="image-prev" *ngIf="imgSrc !== '' && imgSrc">
+      <img [src]="imgSrc" [alt]="form.value.title">
+    </div>
+
+    <button mat-raised-button color="primary" type="submit" *ngIf="mode === 'Post' || mode === null"
+      [disabled]='postForm.invalid'>{{mode}}</button>
+    <button mat-raised-button color="primary" type="button" *ngIf="mode === 'Edit'" [disabled]='postForm.invalid'
+      (click)="editPost()">{{mode}}</button>
+  </form>
+
+</mat-card>
+
+
+<hr>

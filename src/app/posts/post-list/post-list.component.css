@@ -1,0 +1,29 @@
+:host{
+  display: block;
+  margin-top: 1rem;
+}
+
+mat-spinner{
+  margin: auto;
+}
+
+mat-paginator{
+  margin-top: 1rem;
+}
+
+.panel-container{
+  display: grid;
+  grid-template-columns: 25% 75%;
+  padding: 5px;
+}
+
+.post-img{
+  width: 100%;
+  padding-right: 5px;
+
+
+}
+.post-img img{
+  width: 100%;
+  box-shadow: 2px,2px,5px rgba(0, 0 , 0, 0.5);
+}

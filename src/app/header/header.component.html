@@ -1,0 +1,8 @@
+<mat-toolbar color="primary">
+  <span><a *ngIf="userIsAuthenticated" routerLink="/create">create Post</a></span>
+  <span class="spacer"></span>
+  <span><a *ngIf="!userIsAuthenticated" mat-button routerLink="/login">Login</a></span>
+  <span><a *ngIf="!userIsAuthenticated" mat-button routerLink="/signup">Singup</a></span>
+  <span><button *ngIf="userIsAuthenticated" mat-button (click)="logout()">Logout</button></span>
+  <span><a mat-button routerLink="/">My Posts</a></span>
+</mat-toolbar>
