@@ -7,7 +7,7 @@ const postRoutes = require('./routes/posts');
 const userRoutes = require('./routes/user');
 
 const app = express();
-mongoose.connect("mongodb+srv://Syar:"+ process.env.MONGO_DB_PASS +"@cluster0.u9k2w.mongodb.net/dbTest?retryWrites=true&w=majority",{ useUnifiedTopology: true,
+mongoose.connect("mongodb+srv://Syar:"+ "H88Y8Q5KN3PAgVW" +"@cluster0.u9k2w.mongodb.net/dbTest?retryWrites=true&w=majority",{ useUnifiedTopology: true,
 useNewUrlParser: true}).then(() => {
   console.log('connection success');
 }).catch(() => {
