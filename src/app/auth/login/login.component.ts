@@ -5,6 +5,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 
+const googleLogoURL =
+  'https://raw.githubusercontent.com/fireflysemantics/logo/master/Google.svg';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -22,7 +24,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   ) {
     this.matIconRegistry.addSvgIcon(
       'logo',
-      this.domSanitizer.bypassSecurityTrustResourceUrl(this.googleLogoURL)
+      this.domSanitizer.bypassSecurityTrustResourceUrl(googleLogoURL)
     );
   }
 
