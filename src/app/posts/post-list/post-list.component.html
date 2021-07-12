@@ -3,7 +3,10 @@
   <mat-expansion-panel *ngFor="let post of posts">
     <mat-expansion-panel-header>
       <mat-label class="mat-h1">
-        {{post.title}}
+        <div color="primary">
+          {{post.title}}
+        </div>
+
       </mat-label>
     </mat-expansion-panel-header>
     <div class="panel-container">

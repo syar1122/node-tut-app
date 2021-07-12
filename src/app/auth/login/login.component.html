@@ -16,6 +16,10 @@
 
     <button mat-raised-button color="primary" type="submit" [disabled]='loginForm.invalid'
       *ngIf="!isLoading">Login</button>
+
+    <button mat-button style="padding: 1rem;">
+      <mat-icon style="width: 50px; height:30px" svgIcon="logo"></mat-icon>
+    </button>
   </form>
   <mat-spinner *ngIf="isLoading"> </mat-spinner>
 

@@ -15,6 +15,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
 import { PostListComponent } from './posts/post-list/post-list.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { AppRoutingModule } from './app-routing.module';
@@ -45,6 +46,7 @@ import { ErrorInterceptor } from './error.interceptor';
     MatPaginatorModule,
     MatProgressSpinnerModule,
     MatDialogModule,
+    MatIconModule,
     FormsModule,
     AppRoutingModule,
     ReactiveFormsModule,

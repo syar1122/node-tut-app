@@ -2,9 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
-
+const dotenv = require('dotenv');
 const postRoutes = require('./routes/posts');
 const userRoutes = require('./routes/user');
+
+dotenv.config();
 
 const app = express();
 mongoose.connect("mongodb+srv://Syar:"+ "H88Y8Q5KN3PAgVW" +"@cluster0.u9k2w.mongodb.net/dbTest?retryWrites=true&w=majority",{ useUnifiedTopology: true,
@@ -14,8 +16,8 @@ useNewUrlParser: true}).then(() => {
   console.log("failed to connect");
 });
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:false}));
+app.use(express.json());
+app.use(express.urlencoded({extended:false}));
 app.use("/images", express.static(path.join('backend/images')));
 
 app.use((req,res,next) => {
