@@ -5,8 +5,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 
-const googleLogoURL =
-  'https://raw.githubusercontent.com/fireflysemantics/logo/master/Google.svg';
+const googleLogoURL = './../../../assets/logo/Google_ G _Logo.svg';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,8 +14,7 @@ const googleLogoURL =
 export class LoginComponent implements OnInit, OnDestroy {
   isLoading: boolean = false;
   private authListener: Subscription;
-  private googleLogoURL =
-    'https://raw.githubusercontent.com/fireflysemantics/logo/master/Google.svg';
+
   constructor(
     private authService: AuthService,
     private matIconRegistry: MatIconRegistry,
@@ -43,6 +41,10 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.isLoading = true;
   }
 
+  loginWithGoogle() {
+    console.log('google login');
+    this.authService.loginWithGoogle();
+  }
   ngOnDestroy(): void {
     this.authListener.unsubscribe();
   }

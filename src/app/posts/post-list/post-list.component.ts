@@ -25,9 +25,6 @@ export class PostListComponent implements OnInit, OnDestroy {
     private router: Router,
     private authService: AuthService
   ) {}
-  ngOnDestroy(): void {
-    this.authStatusListenerSub.unsubscribe();
-  }
 
   ngOnInit(): void {
     this.userId = this.authService.getUserId();
@@ -45,6 +42,7 @@ export class PostListComponent implements OnInit, OnDestroy {
         this.userIsAuthenticated = result;
         this.userId = this.authService.getUserId();
       });
+    console.log(this.userIsAuthenticated);
     console.log(this.userId);
   }
 
@@ -67,5 +65,9 @@ export class PostListComponent implements OnInit, OnDestroy {
     this.currentPage = event.pageIndex;
     this.pageSize = event.pageSize;
     this.postServise.getPosts(this.pageSize, this.currentPage + 1);
+  }
+
+  ngOnDestroy(): void {
+    //this.authStatusListenerSub.unsubscribe();
   }
 }

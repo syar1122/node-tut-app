@@ -1,26 +1,36 @@
-<mat-card>
+<mat-card class="card">
+
+  <div class="form-card">
+
+    <form *ngIf="!isLoading" action="post" (submit)="login(loginForm)" #loginForm="ngForm">
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput ngModel name="email" id="email" type="text" #email="ngModel" required email>
+        <mat-error *ngIf="email.touched && email.invalid">this field required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Passord</mat-label>
+        <input type="password" ngModel name="pass" id="pass" matInput placeholder="Password" #pass="ngModel" required>
+        <mat-error *ngIf="pass.touched && pass.invalid">this field required</mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]='loginForm.invalid'
+        *ngIf="!isLoading">Login</button>
 
 
-  <form *ngIf="!isLoading" action="post" (submit)="login(loginForm)" #loginForm="ngForm">
-    <mat-form-field>
-      <mat-label>Email</mat-label>
-      <input matInput ngModel name="email" id="email" type="text" #email="ngModel" required email>
-      <mat-error *ngIf="email.touched && email.invalid">this field required</mat-error>
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>Passord</mat-label>
-      <input type="password" ngModel name="pass" id="pass" matInput placeholder="Password" #pass="ngModel" required>
-      <mat-error *ngIf="pass.touched && pass.invalid">this field required</mat-error>
-    </mat-form-field>
-
-    <button mat-raised-button color="primary" type="submit" [disabled]='loginForm.invalid'
-      *ngIf="!isLoading">Login</button>
-
-    <button mat-button style="padding: 1rem;">
-      <mat-icon style="width: 50px; height:30px" svgIcon="logo"></mat-icon>
+    </form>
+    <div class="hr-div">
+      <hr style="width: 33%; justify-self: left;">
+      <p style="flex-grow: 3;text-align: center;"> or</p>
+      <hr style="width: 33%;justify-self:right;">
+    </div>
+    <button mat-raised-button class="google-btn" type="button" (click)="loginWithGoogle()">
+      <mat-icon svgIcon="logo"></mat-icon>
+      Login With Google
     </button>
-  </form>
+  </div>
+
   <mat-spinner *ngIf="isLoading"> </mat-spinner>
 
 </mat-card>

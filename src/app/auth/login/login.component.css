@@ -1,4 +1,44 @@
-mat-form-field{
+mat-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5px;
+}
 
+.form-card *{
+margin: 2px;
+}
+.form-card{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5px;
+}
+
+form *{
+width: 100%;
+}
+
+.google-btn {
+  font-size: 14px;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.google-btn mat-icon{
+  height: 14px;
+  width: 14px;
+  display: inline-flex;
+  align-self: center;
+}
+
+.google-btn mat-icon svg{
+  margin: auto;
+}
+
+.hr-div{
   width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }

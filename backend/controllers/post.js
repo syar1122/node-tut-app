@@ -1,12 +1,12 @@
 const Post = require('../models/post');
 
-exports.creatPost = (req, res, next) => {
+exports.creatPost = (req, res) => {
   const url = req.protocol + '://' + req.get("host");
   const post = new Post({
     title:req.body.title,
     content:req.body.content,
     imagePath:url + "/images/" + req.file.filename,
-    creator: req.userData.userId
+    creator: req.user._id
   });
 
   console.log("Post userData",req.userData);
@@ -21,7 +21,7 @@ exports.creatPost = (req, res, next) => {
   });
 }
 
-exports.fetchPosts = (req, res, next) => {
+exports.fetchPosts = (req, res) => {
   const pageSize = +req.query.pageSize;
   const page = +req.query.page;
   let postQ = Post.find();
@@ -70,10 +70,10 @@ exports.updatePost = (req,res) => {
     title: req.body.title,
     content: req.body.content,
     imagePath:imagePath,
-    creator: req.userData.userId
+    creator: req.user._id
   });
   console.log("updatedpost", post);
-  Post.updateOne({_id: req.params.id, creator:req.userData.userId}, post).then((result) => {
+  Post.updateOne({_id: req.params.id, creator:req.user._id}, post).then((result) => {
     console.log(result);
     if(result.n > 0){
       res.status(200).json(result);
@@ -86,10 +86,10 @@ exports.updatePost = (req,res) => {
   });
 }
 
-exports.deletePost = (req, res, next) => {
+exports.deletePost = (req, res) => {
   console.log(req.userData);
   console.log("express js delete", req.params.id);
-    Post.deleteOne({_id: req.params.id, creator:req.userData.userId}).then((result) => {
+    Post.deleteOne({_id: req.params.id, creator:req.user._id}).then((result) => {
       if(result.n > 0){
         res.status(200).json({message: "deleted"});
       }else{
