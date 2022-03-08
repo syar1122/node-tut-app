@@ -1,0 +1,39 @@
+<ng-container *ngIf="user?.local">
+
+  <div class="main-container" *ngIf="user">
+
+    <div class="flex-avatar">
+      <img matAvatar src="../../../favicon.ico" alt="...">
+    </div>
+    <div class="flex-content">
+      <h1 class="mat-headline">{{user}}</h1>
+      <h1 class="mat-headline">{{user.local?.email}}</h1>
+      <p class="mat-body-1">its syar sardars biography here you can describe your self .</p>
+
+      <div style="width: 100%;height: 32px;display: flex; flex-direction: row;margin-top: auto;">
+        <div class="mat-title" style="margin-right: 15px;">following : {{user?.following?.length}}</div>
+        <div class="mat-title" style="margin-right: 15px;">followers : {{user?.followers?.length}}</div>
+        <span class="spacer"></span>
+        <button mat-raised-button color="primary" routerLink="/user/edit/{{user._id}}">Edit</button>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<mat-tab-group mat-align-tabs="center" animationDuration="2000ms">
+  <mat-tab label="First">Content 1</mat-tab>
+  <mat-tab label="Second">Content 2</mat-tab>
+  <mat-tab label="Third">Content 3</mat-tab>
+</mat-tab-group>
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+
+    <mat-panel-title>
+      <img matListAvatar src="../../../favicon.ico" alt="...">
+      This is the expansion title
+    </mat-panel-title>
+    <mat-panel-description>
+      This is a summary of the content
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+  content
+</mat-expansion-panel>

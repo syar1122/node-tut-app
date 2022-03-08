@@ -1,4 +1,5 @@
 <mat-toolbar color="primary">
+  <span><a *ngIf="userIsAuthenticated" routerLink="user/profile">profile</a></span>
   <span><a *ngIf="userIsAuthenticated" routerLink="/create">create Post</a></span>
   <span class="spacer"></span>
   <span><a *ngIf="!userIsAuthenticated" mat-button routerLink="/login">Login</a></span>

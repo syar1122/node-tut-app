@@ -1,14 +1,20 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const User = require('../models/user');
 
-passport.serializeUser(function(user, done) {
-  done(null, user.id);
-});
+// passport.serializeUser((user, done) => {
+//   console.log("passport serialize")
+//   done(null, user._id);
+// });
 
-passport.deserializeUser(function(id, done) {
+// passport.deserializeUser((id, done) => {
+//   console.log("passport deSerialize " + id)
+//   User.findById(id).then((err,user) => {
+//     console.log(user)
+//     done(err, user);
+//   });
 
-    done(null, id);
-  });
+//   });
 
 
 passport.use(new GoogleStrategy({
@@ -16,11 +22,31 @@ passport.use(new GoogleStrategy({
     clientSecret: 'wyP8R4ambSWFFJZKw2vSolC1',
     callbackURL: "http://localhost:3000/api/user/google/callback"
   },
-  function(accessToken, refreshToken, profile, cb) {
+  async function(accessToken, refreshToken, profile, done) {
 
-    console.log(profile);
+    try {
+      console.log(profile)
+    currentUser = await User.findOne({'google.email': profile.emails[0].value});
 
-      return cb(null, profile);
+    if(!currentUser){
+      const newUser = new User({'provider':profile.provider,'google':{username:profile.displsyname,fname:profile.name.givenName,lname:profile.name.familyName,email:profile.emails[0].value,profilePicture:profile.photos[0].value}});
+      user = await newUser.save();
+      if(user){
+        console.log('google user created');
+        done(null, newUser);
+      }
+
+    }
+
+      console.log('google user exist');
+
+      done(null, currentUser);
+    } catch (err) {
+      done(err,false);
+    }
+
+
+
 
   }
 ));

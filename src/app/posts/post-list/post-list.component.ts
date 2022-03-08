@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { Route, Router, RouterModule } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Post } from 'src/app/post.model';
+import { Post } from 'src/app/models/post.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { PostService } from 'src/app/services/post.service';
 
@@ -42,8 +42,6 @@ export class PostListComponent implements OnInit, OnDestroy {
         this.userIsAuthenticated = result;
         this.userId = this.authService.getUserId();
       });
-    console.log(this.userIsAuthenticated);
-    console.log(this.userId);
   }
 
   onDelete(id: string) {
@@ -60,7 +58,6 @@ export class PostListComponent implements OnInit, OnDestroy {
   }
 
   onChangePage(event) {
-    console.log(event);
     this.isLoading = true;
     this.currentPage = event.pageIndex;
     this.pageSize = event.pageSize;

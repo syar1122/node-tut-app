@@ -1,0 +1,50 @@
+<form [formGroup]="form" *ngIf="!isLoading" action="post" (submit)="editUser()" #userForm="ngForm">
+
+  <mat-form-field>
+    <mat-label>First Name</mat-label>
+    <input formControlName="fName" matInput type="text">
+    <mat-error *ngIf="form.get('fName')?.invalid">this field required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Last Name</mat-label>
+    <input formControlName="lName" matInput type="text">
+    <mat-error *ngIf="form.get('lName')?.invalid">this field required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>User Name</mat-label>
+    <input formControlName="userName" matInput type="text">
+    <mat-error *ngIf="form.get('userName')?.invalid">this field required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input formControlName="email" matInput type="text">
+    <mat-error *ngIf="form.get('email')?.invalid">this field required</mat-error>
+  </mat-form-field>
+
+  <mat-label>Gender</mat-label>
+  <mat-radio-group formControlName=gender>
+    <mat-radio-button value="0">Male</mat-radio-button>
+    <mat-radio-button value="1">Female</mat-radio-button>
+  </mat-radio-group>
+
+
+  <mat-form-field>
+    <mat-label>Bio.</mat-label>
+    <textarea matInput formControlName="bio" rows="5" placeholder="write your opinion"></textarea>
+    <mat-error *ngIf="form.get('bio')?.invalid">this field required</mat-error>
+  </mat-form-field>
+  <!--
+  <div>
+    <button mat-stroked-button type="button" (click)="file.click() ">Open File</button>
+    <input type="file" style="display: none;" #file (change)="onImgPick($event)">
+  </div> -->
+  <!-- <div class="image-prev" *ngIf="imgSrc !== '' && imgSrc">
+    <img [src]="imgSrc" [alt]="form.value.title">
+  </div> -->
+
+  <button mat-raised-button color="primary" type="submit">Complete</button>
+
+</form>

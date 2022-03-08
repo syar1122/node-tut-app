@@ -3,9 +3,13 @@ const session = require('cookie-session');
 const mongoose = require('mongoose');
 const path = require('path');
 const dotenv = require('dotenv');
-var cors = require('cors');
+const morgan = require('morgan');
+const cors = require('cors');
+
+
 
 const postRoutes = require('./routes/posts');
+const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
 const passport = require('passport');
 dotenv.config();
@@ -26,6 +30,8 @@ app.use(express.json());
 
 app.use("/images", express.static(path.join('backend/images')));
 
+app.use(morgan('dev'));
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -36,8 +42,11 @@ app.use((req,res,next) => {
   next();
 });
 
-app.use("/api/posts",postRoutes);
+app.use("/api/auth",authRoutes);
 app.use("/api/user",userRoutes);
+app.use("/api/posts",postRoutes);
+
+
 
 
 

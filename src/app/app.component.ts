@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthInterceptor } from './auth.interceptor';
-import { Post } from './post.model';
+import { Post } from './models/post.model';
 import { AuthService } from './services/auth.service';
 
 @Component({

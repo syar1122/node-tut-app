@@ -9,7 +9,7 @@ exports.creatPost = (req, res) => {
     creator: req.user._id
   });
 
-  console.log("Post userData",req.userData);
+  console.log("Post userData",req.user);
 
   post.save().then(result => {
     res.status(201).json({
